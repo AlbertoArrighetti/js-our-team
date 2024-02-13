@@ -52,13 +52,12 @@ const cardList = document.getElementById("card-list");
 // Stampare su console, per ogni membro del team, le informazioni di nome, ruolo e la stringa della foto
 for (let i = 0; i < membersInfo.length; i++) {
 
-
     const member = membersInfo[i];
 
     // creo una nuova card 
     const cardElement = document.createElement("div");
     cardElement.classList.add("card", "col", "m-3", "p-2");
-    cardElement.style.width = "18rem";
+    cardElement.style.width = "20rem";
     
 
     // image 
@@ -66,23 +65,19 @@ for (let i = 0; i < membersInfo.length; i++) {
     img.classList.add("card-img-top", "mb-3");
     img.src = member.picture;
 
-
     // nome completo 
     const name = document.createElement("div");
-    name.classList.add("text-center")
+    name.classList.add("text-center", "fs-4")
     name.textContent = `${member.fullName}`;
 
-
-    // ruolo completo 
+    // ruolo  
     const role = document.createElement("div");
     role.classList.add("text-center")
     role.textContent = `${member.role}`;
     
 
     // aggiungo le immagini e le info
-    cardElement.append(img);
-    cardElement.append(name);
-    cardElement.append(role);
+    cardElement.append(img, name, role);
 
     // aggiungo la card alla lista 
     cardList.append(cardElement);
