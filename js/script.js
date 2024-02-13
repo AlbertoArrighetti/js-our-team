@@ -10,51 +10,69 @@ const membersInfo = [
     {
         fullName: "Wayne Barnett",
         role: "Founder & CEO",
-        picture: "wayne-barnett-founder-ceo.jpg",
+        picture: "./img/wayne-barnett-founder-ceo.jpg",
     },
     {
         fullName: "Angela Caroll",
         role: "Chief Editor",
-        picture: "angela-caroll-chief-editor.jpg",
+        picture: "./img/angela-caroll-chief-editor.jpg",
     },
     {
         fullName: "Walter Gordon",
         role: "Office Manager",
-        picture: "walter-gordon-office-manager.jpg",
+        picture: "./img/walter-gordon-office-manager.jpg",
     },
     {
         fullName: "Angela Lopez",
         role: "Social Media Manager",
-        picture: "angela-lopez-social-media-manager.jpg",
+        picture: "./img/angela-lopez-social-media-manager.jpg",
     },
     {
         fullName: "Scott Estrada",
         role: "Developer",
-        picture: "scott-estrada-developer.jpg",
+        picture: "./img/scott-estrada-developer.jpg",
     },
     {
         fullName: "Barbara Ramos",
         role: "Graphic Designer",
-        picture: "barbara-ramos-graphic-designer.jpg",
+        picture: "./img/barbara-ramos-graphic-designer.jpg",
     },
 ]
 
 // prelevo la lista
 const listElement = document.getElementById("list");
 
+
+
+
+
+
+
+
+
+
+
 // Stampare su console, per ogni membro del team, le informazioni di nome, ruolo e la stringa della foto
 for (let i = 0; i < membersInfo.length; i++) {
 
-    const infos = membersInfo[i];
-    // inizializzo la variabile per mostrare le info in pagina 
-    let infosInPage = "";
+    const member = membersInfo[i];
+    
+    // elemento li 
+    const listItem = document.createElement("li");
+    listItem.classList.add("list-group-item");
 
-    for(let key in infos) {
-        // console.log(key + ": " + infos[key]);
-
-        // Stampare le stesse informazioni su DOM sottoforma di stringhe
-        infosInPage += `${infos[key]}, `;
-    }
-
-    listElement.innerHTML += `<li class="list-group-item">${infosInPage}</li>`;    
+    // image 
+    const img = document.createElement("img");
+    img.src = member.picture;
+    // descrizione 
+    const info = document.createElement("div");
+    info.textContent = `${member.fullName}, ${member.role}`
+    
+    
+    // aggiungo gli elementi alla lista 
+    listElement.append(listItem);
+        
+    // aggiungo le immagini e le info
+    listItem.append(info);
+    listItem.append(img);
 }
