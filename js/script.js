@@ -4,6 +4,8 @@
 // BONUS 1:
 // Trasformare la stringa foto in una immagine effettiva
 
+// BONUS 2:
+// Organizzare i singoli membri in card/schede
 
 // Creare l’array di oggetti con le informazioni fornite.
 const membersInfo = [
@@ -39,40 +41,49 @@ const membersInfo = [
     },
 ]
 
-// prelevo la lista
-const listElement = document.getElementById("list");
 
 
 
-
-
-
-
-
+// prelevo la card e il corpo
+const cardList = document.getElementById("card-list");
 
 
 
 // Stampare su console, per ogni membro del team, le informazioni di nome, ruolo e la stringa della foto
 for (let i = 0; i < membersInfo.length; i++) {
 
+
     const member = membersInfo[i];
+
+    // creo una nuova card 
+    const cardElement = document.createElement("div");
+    cardElement.classList.add("card", "col", "m-3", "p-2");
+    cardElement.style.width = "18rem";
     
-    // elemento li 
-    const listItem = document.createElement("li");
-    listItem.classList.add("list-group-item");
 
     // image 
     const img = document.createElement("img");
+    img.classList.add("card-img-top", "mb-3");
     img.src = member.picture;
-    // descrizione 
-    const info = document.createElement("div");
-    info.textContent = `${member.fullName}, ${member.role}`
+
+
+    // nome completo 
+    const name = document.createElement("div");
+    name.classList.add("text-center")
+    name.textContent = `${member.fullName}`;
+
+
+    // ruolo completo 
+    const role = document.createElement("div");
+    role.classList.add("text-center")
+    role.textContent = `${member.role}`;
     
-    
-    // aggiungo gli elementi alla lista 
-    listElement.append(listItem);
-        
+
     // aggiungo le immagini e le info
-    listItem.append(info);
-    listItem.append(img);
+    cardElement.append(img);
+    cardElement.append(name);
+    cardElement.append(role);
+
+    // aggiungo la card alla lista 
+    cardList.append(cardElement);
 }
