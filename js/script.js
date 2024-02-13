@@ -1,6 +1,10 @@
 // Utilizzando i dati forniti, creare un array di oggetti per rappresentare i membri del team.
 // Ogni membro è caratterizzato dalle seguenti informazioni: nome, ruolo e foto.
 
+// BONUS 1:
+// Trasformare la stringa foto in una immagine effettiva
+
+
 // Creare l’array di oggetti con le informazioni fornite.
 const membersInfo = [
     {
@@ -35,14 +39,22 @@ const membersInfo = [
     },
 ]
 
+// prelevo la lista
+const listElement = document.getElementById("list");
+
 // Stampare su console, per ogni membro del team, le informazioni di nome, ruolo e la stringa della foto
 for (let i = 0; i < membersInfo.length; i++) {
 
     const infos = membersInfo[i];
+    // inizializzo la variabile per mostrare le info in pagina 
+    let infosInPage = "";
 
     for(let key in infos) {
+        // console.log(key + ": " + infos[key]);
 
-        console.log(key + ": " + infos[key])
-    
+        // Stampare le stesse informazioni su DOM sottoforma di stringhe
+        infosInPage += `${infos[key]}, `;
     }
+
+    listElement.innerHTML += `<li class="list-group-item">${infosInPage}</li>`;    
 }
